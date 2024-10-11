@@ -1,1 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon Website</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Preloader styles */
+    #preloader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      flex-direction: column;
+      color: #fff;
+    }
+
+    #preloader img {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+<!
+    #progress-bar {
+      width: 50%;
+      height: 20px;
+      background-color: black;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #progress {
+      height: 100%;
+      width: 0;
+      background-color: blue;
+      animation: loadProgress 2s forwards;
+    }
+
+    #progress-percentage {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      top: 0;
+      left: 0;
+      line-height: 20px;
+    }
+
+    @keyframes loadProgress {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+
+    /* Main content styles */
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 50px;
+      margin-right: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style-type: none;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .coming-soon {
+      padding: 2rem;
+      border: 2px solid #333;
+      background-color: none;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    /* Background video before login */
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* Video after login */
+    .video-content {
+      width: 80%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .text-content {
+      color: #070707;
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background video before login -->
+  <video class="video-background" autoplay muted loop>
+    <source src="https://res.cloudinary.com/dl8dmkhmv/video/upload/v1728652928/video_20241011_185113_edit_cmusxq.mp4" type="video/mp4">
+  </video>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720425576/20240629_174053_a3rr4f.jpg" alt="Loading Logo">
+    <div id="progress-bar">
+      <div id="progress"></div>
+      <div id="progress-percentage">0%</div>
+    </div>
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720065209/IMG_20240515_080836_nr89j0.jpg" alt="Logo">
+      <h1>CHETHAN_ROYALSTAR</h1>
+    </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="coming-soon" id="content-section">
+      
+        <h1 style="color:red;">Are You Ready!</h1>
+        <h1 style="color:white;">Taking risks.</h1>
+        <h1 style="color:white;">Breaking rules. Changing shape.</h1>
+        <h1 style="color:white;">Transforming inspiration leading into dark World</h1>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Contact us: kalkithedarkwar@gmail.com</p>
+    <p>&copy; 2024 Royalstar. All Rights Reserved.</p>
+  </footer>
+
+  
+
+  <script>
+    // Wait for the page to load completely
+    window.addEventListener("load", () => {
+      let progress = 0;
+      const progressElement = document.getElementById("progress");
+      const percentageElement = document.getElementById("progress-percentage");
+
+      // Increment progress every 50ms for smoother animation
+      const interval = setInterval(() => {
+        progress += 2; // Increment progress by 2%
+        progressElement.style.width = progress + "%";
+        percentageElement.textContent = progress + "%";
+
+        if (progress >= 100) {
+          clearInterval(interval);
+
+          // Hide preloader after progress completes
+          setTimeout(() => {
+            document.getElementById('preloader').style.display = 'none';
+            
+            // Play welcome audio and show content
+            setTimeout(() => {
+              const audio = document.getElementById('welcome-audio');
+              audio.play();
+
+              // Show video and text after login
+              const contentSection = document.getElementById('content-section');
+              contentSection.innerHTML = `
+                <audio controls>
+                  <source src="https://res.cloudinary.com/dl8dmkhmv/video/upload/v1728652538/Welcome_to_our_world_acj09d.mp3" type="audio/mp3">
+                  Your browser does not support the audio element.
+                </audio>
+                <div class="text-content">
+                  <p></p>
+                </div>`;
+            }, 300); // Delay the audio by 300ms after hiding preloader
+          }, 500); // Small delay before hiding preloader
+        }
+      }, 50); // Update every 50ms
+
+      console.log("Website is loaded and ready!");
+    });
+  </script>
+</body>
+</html>
 
